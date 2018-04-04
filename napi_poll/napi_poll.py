@@ -7,7 +7,7 @@ from datetime import datetime
 
 
 
-with open('napi.c') as  x: bpf_text  = x.read()
+with open('napi_poll.c') as  x: bpf_text  = x.read()
 
 b = BPF(text=bpf_text)
 
