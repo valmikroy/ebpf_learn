@@ -33,7 +33,7 @@ parser.add_argument("-t", "--type",
 )
 args = parser.parse_args()
 
-with open('softirq_time_hist.c') as  x: bpf_text  = x.read()
+with open('softirq_time.c') as  x: bpf_text  = x.read()
 
 if args.type:
         bpf_text = bpf_text.replace('--SOFTIRQ--',  args.type)
