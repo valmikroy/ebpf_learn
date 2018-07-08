@@ -5,13 +5,7 @@ Various preliminary ebpf code
 install bcc tools with following snippet
 
 ```bash
-# cpu layout script
-https://raw.githubusercontent.com/emmericp/dpdk/master/usertools/cpu_layout.py
- 
-# softnet stats
-https://github.com/hjr3/softnet-stat#build
- 
-# perf stats install
+ # perf stats install
 # https://perf.wiki.kernel.org/index.php/Tutorial
 sudo apt-get install linux-tools-common linux-tools-generic linux-tools-`uname -r`
  
