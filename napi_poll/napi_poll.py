@@ -25,16 +25,16 @@ while (1):
 
         napi_poll_full = {}
         for (k, v) in b.get_table('napi_poll_full').items():
-            napi_poll_full[(k.dev, k.cpu, k.pid, k.name)] = v.value
+            napi_poll_full[(k.dev, k.cpu, k.pid, k.budget, k.name)] = v.value
 
 
         for (k, v) in b.get_table('napi_poll_count').items():
 
             try:
-                full_count = napi_poll_full[(k.dev, k.cpu, k.pid, k.name)]
+                full_count = napi_poll_full[(k.dev, k.cpu, k.pid, k.budget, k.name)]
             except KeyError:
                 full_count = 0
-            print('timestamp=%s type=napi iface=%s cpu=%d pid=%d proc_name=%s poll_count=%d full_count=%d' % ( ts, k.dev, k.cpu,  k.pid, k.name.decode(), v.value, full_count ))
+            print('timestamp=%s type=napi iface=%s cpu=%d pid=%d budget=%d proc_name=%s poll_count=%d full_count=%d' % ( ts, k.dev, k.cpu,  k.pid, k.budget, k.name.decode(), v.value, full_count ))
 
 
         b.get_table('napi_poll_count').clear()

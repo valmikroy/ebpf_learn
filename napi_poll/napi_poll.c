@@ -8,6 +8,7 @@ struct key_t {
     char dev[64];
     int cpu;
     int pid;
+    int budget;
     char name[TASK_COMM_LEN];
 };
 
@@ -38,6 +39,7 @@ TRACEPOINT_PROBE(napi, napi_poll)
 
 
     get_key(&key);
+    key.budget = args->budget;
 
     TP_DATA_LOC_READ_CONST(iface, dev_name, 64);
     __builtin_memcpy(&(key.dev), iface, 64);
