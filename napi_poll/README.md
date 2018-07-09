@@ -16,3 +16,7 @@ format:
 
 print fmt: "napi poll on napi struct %p for device %s work %d budget %d", REC->napi, __get_str(dev_name), REC->work, REC->budget
 ```
+
+napi_poll returns amount of work has done which equal to weight if max work is done. In our script we are counting occurance of napi_poll as napi_count and occurance of max work done as napi_full. ratio of this should give us some feedback on various kernel params to tune.
+
+_NOTE_ I was suspecting that napi_poll would have two budget values, one from device driver's budget for NIC and another softnet data structure backlog processing budget setup by sysctl, though I could not single value of 64 as budget all the time.
