@@ -5,7 +5,11 @@ Various preliminary ebpf code
 install bcc tools with following snippet
 
 ```bash
- # perf stats install
+# install 4.13 series kernel 
+sudo apt-get install `apt-cache search linux | grep 4.13.0-45 | awk -F' - ' '{print $1}' | xargs ` -y
+
+
+# perf stats install
 # https://perf.wiki.kernel.org/index.php/Tutorial
 sudo apt-get install linux-tools-common linux-tools-generic linux-tools-`uname -r`
  
