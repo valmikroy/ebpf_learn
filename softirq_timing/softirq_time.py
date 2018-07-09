@@ -1,5 +1,6 @@
 from __future__ import print_function
 import argparse
+import os
 from bcc import BPF
 from time import sleep, strftime
 from datetime import datetime
@@ -33,7 +34,7 @@ parser.add_argument("-t", "--type",
 )
 args = parser.parse_args()
 
-with open('softirq_time.c') as  x: bpf_text  = x.read()
+with open(os.path.dirname(__file__) + '/softirq_time.c') as  x: bpf_text  = x.read()
 
 if args.type:
         bpf_text = bpf_text.replace('--SOFTIRQ--',  args.type)

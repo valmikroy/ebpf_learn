@@ -4,6 +4,7 @@ from __future__ import print_function
 import argparse
 from bcc import BPF, PerfType, PerfHWConfig
 import signal
+import os
 from time import sleep, strftime
 from datetime import datetime
 
@@ -18,7 +19,7 @@ args = parser.parse_args()
 
 perf_sample_period =  100
 
-with open('llcstat.c') as x: bpf_text  = x.read()
+with open(os.path.dirname(__file__) + '/llcstat.c') as x: bpf_text  = x.read()
 
 
 

@@ -1,8 +1,9 @@
 from __future__ import print_function
 from bcc import BPF
 from time import sleep, strftime
+import os
 
-with open('softirq_time_hist.c') as  x: bpf_text  = x.read()
+with open(os.path.dirname(__file__) + '/softirq_time_hist.c') as  x: bpf_text  = x.read()
 
 b = BPF(text=bpf_text)
 print("Tracing RX softirq time... Hit Ctrl-C to end.")

@@ -1,5 +1,6 @@
 from __future__ import print_function
 import argparse
+import os
 from bcc import BPF
 from time import sleep, strftime
 from datetime import datetime
@@ -7,7 +8,7 @@ from datetime import datetime
 
 
 
-with open('napi_poll.c') as  x: bpf_text  = x.read()
+with open( os.path.dirname(__file__) + '/napi_poll.c') as  x: bpf_text  = x.read()
 
 b = BPF(text=bpf_text)
 

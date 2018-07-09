@@ -2,6 +2,7 @@
 
 
 from bcc import BPF
+import os
 import argparse
 from time import sleep, strftime
 
@@ -20,7 +21,7 @@ args = parser.parse_args()
 
 
 # Read ebpf c code
-with open('cpu_sched_time.c') as x: bpf_text  = x.read()
+with open( os.path.dirname(__file__) + '/cpu_sched_time.c') as x: bpf_text  = x.read()
 
 
 
