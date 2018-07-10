@@ -1,5 +1,4 @@
 from __future__ import print_function
-import argparse
 import os
 from bcc import BPF
 from time import sleep, strftime
@@ -8,42 +7,8 @@ from datetime import datetime
 
 
 
-parser = argparse.ArgumentParser(
-    description="Softirq timing and count by its type",
-    formatter_class=argparse.RawDescriptionHelpFormatter)
 
-
-softirq_help="""
-       Numeric identifier for softirq
-
-       0 - HI
-       1 - TIMER
-       2 - net_tx
-       3 - net_rx
-       4 - block
-       5 - irq_poll
-       6 - tasklet
-       7 - sched
-       8 - hrtimer
-       9 - RCU
-"""
-
-
-parser.add_argument("-t", "--type",
-    help=softirq_help
-)
-args = parser.parse_args()
-
-with open(os.path.dirname(__file__) + '/softirq_time.c') as  x: bpf_text  = x.read()
-
-if args.type:
-        bpf_text = bpf_text.replace('--SOFTIRQ--',  args.type)
-
-else:
-        print("Provide numeric identifier for softirq type")
-        print(softirq_help)
-        exit()
-
+with open(os.path.dirname(__file__) + '/softirq_time_net.c') as  x: bpf_text  = x.read()
 
 
 b = BPF(text=bpf_text)

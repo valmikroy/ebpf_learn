@@ -59,3 +59,5 @@ timestamp=1531073310.858350 type=softirq softirq_type=3 pid=1384 proc_name=irq/1
 timestamp=1531073310.858350 type=softirq softirq_type=3 pid=1387 proc_name=irq/106-enp2s0f cpu=20 softirq_time=4197 softirq_count=1
 timestamp=1531073310.858350 type=softirq softirq_type=3 pid=1386 proc_name=irq/105-enp2s0f cpu=20 softirq_time=4187 softirq_count=1
 ```
+
+- `softirq_time_net.py` is similar to `softirq_time.py` but running for both TX and RX softirqs as I can not run two separate instances of `softirq_time.py` simultaneously
