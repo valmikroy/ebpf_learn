@@ -41,7 +41,7 @@ TRACEPOINT_PROBE(irq, softirq_entry)
     get_key(&key);
 
     // net rx or tx only
-    if ( args->vec != 2 || args->vec != 3 )
+    if (!( args->vec == 2 || args->vec == 3 ))
   	return 0;
 
     u64 ts = bpf_ktime_get_ns();
